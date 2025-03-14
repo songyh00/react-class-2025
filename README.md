@@ -9,15 +9,15 @@ React의 기본 개념을 익히고, 컴포넌트 기반 UI 개발을 연습하�
 
 ### 1️⃣ 프로젝트 시작할 때
 ```sh
-git init                     # 현재 폴더를 Git 저장소로 초기화
+git init                                                                # 현재 폴더를 Git 저장소로 초기화
 git remote add origin https://github.com/songyh00/react-class-2025.git  # GitHub 원격 저장소 추가
-git clone https://github.com/songyh00/react-class-2025.git          # GitHub에서 프로젝트 다운로드
+git clone https://github.com/songyh00/react-class-2025.git              # GitHub에서 프로젝트 다운로드
 ```
 
 ### 2️⃣ 변경 사항 저장하기
 ```sh
-git status                   # 현재 변경된 파일 확인
-git add .                     # 모든 변경된 파일 스테이징
+git status                     # 현재 변경된 파일 확인
+git add .                      # 모든 변경된 파일 스테이징
 git commit -m "커밋 메시지"     # 변경 사항 커밋
 ```
 
@@ -39,7 +39,7 @@ git branch -d <브랜치_이름>    # 브랜치 삭제
 
 ### 5️⃣ 이전 커밋 되돌리기 (Revert & Reset)
 ```sh
-git revert <커밋해시>         # 특정 커밋 되돌리기 (새로운 커밋 생성)
+git revert <커밋해시>          # 특정 커밋 되돌리기 (새로운 커밋 생성)
 git reset --soft HEAD~1       # 최근 1개 커밋을 취소 (변경 내용 유지)
 git reset --hard HEAD~1       # 최근 1개 커밋을 완전히 삭제 (⚠ 되돌릴 수 없음!)
 ```
@@ -60,9 +60,9 @@ git stash drop                # 특정 stash 삭제
 
 ### 8️⃣ 원격 저장소 관련
 ```sh
-git remote -v                 # 연결된 원격 저장소 확인
+git remote -v                                 # 연결된 원격 저장소 확인
 git remote set-url origin <새로운_저장소_URL>  # 원격 저장소 변경
-git remote remove origin      # 원격 저장소 삭제
+git remote remove origin                      # 원격 저장소 삭제
 ```
 
 ### 9️⃣ 강제 푸시 / 강제 풀 (⚠ 조심해서 사용!)
@@ -75,7 +75,7 @@ git reset --hard origin/main  # 원격 저장소 기준으로 강제 덮어쓰�
 ```sh
 clear                         # 터미널 화면 정리
 ls -la                        # 현재 폴더의 모든 파일 보기
-cd <폴더명>                   # 폴더 이동
+cd <폴더명>                    # 폴더 이동
 cd ..                         # 상위 폴더로 이동
 git log --oneline             # 커밋 로그 한 줄로 보기
 ```
