@@ -10,8 +10,8 @@ React의 기본 개념을 익히고, 컴포넌트 기반 UI 개발을 연습하�
 ### 1️⃣ 프로젝트 시작할 때
 sh
 git init                     # 현재 폴더를 Git 저장소로 초기화
-git remote add origin https://github.com/songyh00/react-app.git  # GitHub 원격 저장소 추가
-git clone https://github.com/songyh00/react-app.git          # GitHub에서 프로젝트 다운로드
+git remote add origin https://github.com/songyh00/react-class-2025.git  # GitHub 원격 저장소 추가
+git clone https://github.com/songyh00/react-class-2025.git          # GitHub에서 프로젝트 다운로드
 
 
 ### 2️⃣ 변경 사항 저장하기
