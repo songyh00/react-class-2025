@@ -4,6 +4,65 @@
 
 ## React 수업 내용
 
+### 3월27일(4주차)
+- Component와 Nesting
+
+    React 앱은 component 단위로 구성됨.
+
+    component는 UI의 일부분으로, 버튼처럼 작거나 페이지처럼 클 수 있음.
+
+    JavaScript 함수로 작성되며 마크업을 반환함.
+
+    CSS 중첩(Nesting)을 통해 스타일 구성 가능 (2023년부터 CSS에서 직접 지원).
+
+- export와 import
+
+    export default: 기본 component 내보낼 때 사용.
+
+    export: 여러 개의 component를 내보낼 때 사용.
+
+    import 시 default는 이름 자유롭게 지정 가능, export는 정확한 이름 사용해야 함.
+
+- 스타일 추가하기
+
+    React에서는 class 대신 className 사용.
+
+    별도의 CSS 파일에 작성 후, import로 불러와 사용.
+
+    HTML처럼 <link> 태그로 불러오는 방식은 비추천.
+
+- 데이터 표시하기 (JSX 사용법)
+
+    JSX에서는 마크업 안에 JavaScript 표현식을 중괄호 {}로 사용.
+
+    className, src 등에 변수 전달 가능.
+
+- 스타일 적용 확인 및 Profile 컴포넌트
+
+    작성한 CSS를 import 하여 적용.
+
+    Profile 컴포넌트에 사용자 정보(이름, 이미지, 사이즈 등) 전달 및 출력.
+
+- 데이터 중앙 정렬하기
+
+    App.css에 wrapper class 추가 후 App.js에 적용.
+
+    중앙 정렬 등의 스타일은 공통 CSS(App.css)에 정의 가능.
+
+- 조건부 렌더링
+
+    일반 JS 문법 그대로 사용 (if-else, 삼항 연산자, && / || 연산자 등).
+
+    상황에 따라 다른 컴포넌트를 반환.
+
+- 리스트 렌더링
+
+    map() 함수를 사용하여 배열을 반복 렌더링.
+
+    각 항목에는 고유한 key 속성 필요.
+
+    예제: ShoppingList 컴포넌트를 만들어 출력 확인.
+
 ### 3월20일(3주차)
 React는 컴포넌트 기반으로 UI를 구성하는 라이브러리로, 각 컴포넌트는 작은 기능을 수행하며, 이를 조합하여 웹 애플리케이션을 구축한다.
 React에서 컴포넌트는 JavaScript 함수이며, 조건부 렌더링이나 리스트 렌더링을 통해 동적 UI를 생성한다.
