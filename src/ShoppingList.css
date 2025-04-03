@@ -1,0 +1,35 @@
+.shopping-list {
+  list-style-type: disc;
+  list-style-position: outside;
+  padding-left: 1.5em;
+  display: inline-block;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.shopping-list li {
+  font-size: 16px;
+  margin: 4px 0;
+}
+
+/* 각각의 글씨 색상 + marker 색상 */
+.color-red {
+  color: red;
+}
+.color-red::marker {
+  color: red;
+}
+
+.color-green {
+  color: green;
+}
+.color-green::marker {
+  color: green;
+}
+
+.color-blue {
+  color: blue;
+}
+.color-blue::marker {
+  color: blue;
+}

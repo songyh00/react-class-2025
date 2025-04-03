@@ -1,20 +1,42 @@
-import MyB from "./MyButton"
-import { Button1, Button3 } from "./ButtonLib"
-import AP from "./AboutPage"
-import Profile from "./Profile"
-import './App.css'
+import './App.css';
+import MyButton from './MyButton';
+import CountState from './CountState';
+import Profile from './Profile';
 import ShoppingList from './ShoppingList';
+import AboutPage from './AboutPage';
 
-export default function App() {
+function App() {
   return (
-    <div className="wrapper">
-      <h1>Hello React</h1>
-      <MyB /><br />
-      <Button1 />&nbsp;
-      <Button3 />
-      <AP />
+    <div className="app">
+      <h1>Welcome to my app</h1>
+
+      <h3>default export example</h3>
+      <MyButton label="I'm a button" />
+
+      <h3>named export example</h3>
+      {["Button 1", "Button 2", "Button 3"]
+        .filter((label) => label !== "Button 2")
+        .map((label, idx) => (
+          <MyButton key={idx} label={label} />
+        ))}
+
+      <h3>wrapping example</h3>
+
+      <h2>About</h2>
+      <AboutPage />
+
+      <h3>Displaying data</h3>
       <Profile />
+
+      <h3>Rendering lists</h3>
       <ShoppingList />
+
+      <h3>Updating the screen</h3>
+      <CountState />
+      <CountState />
+      <CountState />
     </div>
-  )
+  );
 }
+
+export default App;
