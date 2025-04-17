@@ -5,7 +5,19 @@
 ## React 수업 내용
 
 ### 4월 17일 (7주차)(tic-tac-toe브랜치에서 작업)
--
+- state 끌어올리기 - 개요
+    - 처음엔 각 Square(칸)마다 개별적으로 X를 찍을 수 있었지만, 오직 왼쪽 위 Square만 가능했음.
+    - handleClick 함수가 index 0에만 적용되어 있어서임.
+    - Square 클릭 시 어떤 index를 클릭했는지 상위 컴포넌트(Board) 에서 처리하도록 state를 끌어올려야 함.
+
+- 인덱스 기반으로 handleClick 함수 재정의
+    - handleClick(index)로 index를 인자로 받아서하면 클릭된 Square의 index에 따라 값이 업데이트됨.
+```sh
+const nextSquares = squares.slice();
+nextSquares[i] = "X";
+setSquares(nextSquares);
+```
+
 
 ### 4월 10일 (6주차)
 - 병결
