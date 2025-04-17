@@ -18,6 +18,27 @@ nextSquares[i] = "X";
 setSquares(nextSquares);
 ```
 
+- 콜백 함수 전달 방식의 실수
+    - onSquareClick={handleClick(i)}를 하면 함수가 즉시 실행되어 오류 발생하므로 화살표 함수를 사용해 함수 자체를 넘겨야 함.
+```sh
+onSquareClick={() => handleClick(i)}
+```
+
+- 불변성의 중요성
+    - xIsNext라는 state를 추가해서 다음에 누가 둘 차례인지 추적
+```sh
+const [xIsNext, setXIsNext] = useState(true);
+...
+nextSquares[i] = xIsNext ? "X" : "O";
+setXIsNext(!xIsNext);
+```
+
+- 승자 판단하기
+    - 클릭 시 calculateWinner(squares)를 실행해서 누군가 승리했는지 확인
+    - 이미 값이 있거나, 승자가 있는 경우 클릭 이벤트는 무시
+```sh
+if (squares[i] || calculateWinner(squares)) return;
+```
 
 ### 4월 10일 (6주차)
 - 병결
