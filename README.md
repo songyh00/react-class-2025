@@ -40,6 +40,50 @@ setXIsNext(!xIsNext);
 if (squares[i] || calculateWinner(squares)) return;
 ```
 
+- 승자 판단 후 상태 메시지 출력
+    - calculateWinner(squares)를 호출해서 승자가 있는지 확인
+    - 있으면 status = "Winner: X" 또는 "Winner: O", 없으면 status = "Next player: X" 또는 "Next player: O"
+```sh
+const winner = calculateWinner(squares);
+let status;
+if (winner) {
+  status = "Winner: " + winner;
+} else {
+  status = "Next player: " + (xIsNext ? "X" : "O");
+}
+```
+
+- 히스토리 배열로 이전 상태 저장
+    - squares 배열을 직접 수정하지 않고, 매 클릭마다 slice()로 복사해서 저장 후 모아서 history 배열에 저장
+```sh
+const history = [
+  [null, null, ..., null],   // 첫 턴
+  ["X", null, ..., null],    // 두 번째 턴
+  ["X", "O", ..., null],     // 세 번째 턴
+];
+```
+
+- Game 컴포넌트에서 state 끌어올리기
+    - 이제 Board가 아니라 Game 컴포넌트가 전체 상태 관리의 중심
+    - history를 Game에서 관리하고 Board에는 squares 상태를 props로 넘김
+
+- 컴포넌트 구조 변화
+    - Game이 최상위 컴포넌트가 되고 App.js나 index.js에서 Board 대신 Game을 렌더링
+```sh
+export default function Game() {
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board />
+      </div>
+      <div className="game-info">
+        <ol>{/* TODO: 히스토리 버튼 렌더링 */}</ol>
+      </div>
+    </div>
+  );
+}
+```
+
 ### 4월 10일 (6주차)
 - 병결
 
