@@ -4,6 +4,43 @@
 
 ## React 수업 내용
 
+### 4월 18일 (9주차 보강)(tic-tac-toe브랜치에서 작업)
+- 과거 이동을 위한 map() 사용
+    - history.map()으로 각 게임 상태를 버튼으로 렌더링.
+    - 각 버튼은 jumpTo(move)를 호출함.
+```sh
+const moves = history.map((squares, move) => {
+  const description = move ? `Go to move #${move}` : "Go to game start";
+  return (
+    <li key={move}>
+      <button onClick={() => jumpTo(move)}>{description}</button>
+    </li>
+  );
+});
+```
+
+- key의 중요성
+    - map으로 렌더링하는 <li> 요소에는 반드시 key={move} 지정.
+    - React는 key를 통해 각 요소를 구분하고 효율적으로 리렌더링함.
+
+- jumpTo 함수로 상태 이동
+    - 클릭한 move를 기준으로 현재 상태 업데이트.
+    - 짝수는 X 차례, 홀수는 O 차례로 처리.
+```sh
+const [currentMove, setCurrentMove] = useState(0);
+
+function jumpTo(nextMove) {
+  setCurrentMove(nextMove);
+  setXIsNext(nextMove % 2 === 0);
+}
+```
+
+- 랜더링 기준 변경
+    - 항상 마지막 상태가 아닌, 선택한 시점의 보드를 렌더링하도록 수정.
+```sh
+const currentSquares = history[currentMove];
+```
+
 ### 4월 17일 (7주차)(tic-tac-toe브랜치에서 작업)
 - state 끌어올리기 - 개요
     - 처음엔 각 Square(칸)마다 개별적으로 X를 찍을 수 있었지만, 오직 왼쪽 위 Square만 가능했음.
@@ -38,6 +75,50 @@ setXIsNext(!xIsNext);
     - 이미 값이 있거나, 승자가 있는 경우 클릭 이벤트는 무시
 ```sh
 if (squares[i] || calculateWinner(squares)) return;
+```
+
+- 승자 판단 후 상태 메시지 출력
+    - calculateWinner(squares)를 호출해서 승자가 있는지 확인
+    - 있으면 status = "Winner: X" 또는 "Winner: O", 없으면 status = "Next player: X" 또는 "Next player: O"
+```sh
+const winner = calculateWinner(squares);
+let status;
+if (winner) {
+  status = "Winner: " + winner;
+} else {
+  status = "Next player: " + (xIsNext ? "X" : "O");
+}
+```
+
+- 히스토리 배열로 이전 상태 저장
+    - squares 배열을 직접 수정하지 않고, 매 클릭마다 slice()로 복사해서 저장 후 모아서 history 배열에 저장
+```sh
+const history = [
+  [null, null, ..., null],   // 첫 턴
+  ["X", null, ..., null],    // 두 번째 턴
+  ["X", "O", ..., null],     // 세 번째 턴
+];
+```
+
+- Game 컴포넌트에서 state 끌어올리기
+    - 이제 Board가 아니라 Game 컴포넌트가 전체 상태 관리의 중심
+    - history를 Game에서 관리하고 Board에는 squares 상태를 props로 넘김
+
+- 컴포넌트 구조 변화
+    - Game이 최상위 컴포넌트가 되고 App.js나 index.js에서 Board 대신 Game을 렌더링
+```sh
+export default function Game() {
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board />
+      </div>
+      <div className="game-info">
+        <ol>{/* TODO: 히스토리 버튼 렌더링 */}</ol>
+      </div>
+    </div>
+  );
+}
 ```
 
 ### 4월 10일 (6주차)

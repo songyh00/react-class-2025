@@ -4,4 +4,5 @@ export default function Square({ value, onSquareClick }) {
       {value}
     </button>
   );
+  
 }
