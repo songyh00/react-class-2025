@@ -5,6 +5,41 @@
 ## React 수업 내용
 
 ### 4월 18일 (9주차 보강)(tic-tac-toe브랜치에서 작업)
+- 과거 이동을 위한 map() 사용
+    - history.map()으로 각 게임 상태를 버튼으로 렌더링.
+    - 각 버튼은 jumpTo(move)를 호출함.
+```sh
+const moves = history.map((squares, move) => {
+  const description = move ? `Go to move #${move}` : "Go to game start";
+  return (
+    <li key={move}>
+      <button onClick={() => jumpTo(move)}>{description}</button>
+    </li>
+  );
+});
+```
+
+- key의 중요성
+    - map으로 렌더링하는 <li> 요소에는 반드시 key={move} 지정.
+    - React는 key를 통해 각 요소를 구분하고 효율적으로 리렌더링함.
+
+- jumpTo 함수로 상태 이동
+    - 클릭한 move를 기준으로 현재 상태 업데이트.
+    - 짝수는 X 차례, 홀수는 O 차례로 처리.
+```sh
+const [currentMove, setCurrentMove] = useState(0);
+
+function jumpTo(nextMove) {
+  setCurrentMove(nextMove);
+  setXIsNext(nextMove % 2 === 0);
+}
+```
+
+- 랜더링 기준 변경
+    - 항상 마지막 상태가 아닌, 선택한 시점의 보드를 렌더링하도록 수정.
+```sh
+const currentSquares = history[currentMove];
+```
 
 ### 4월 17일 (7주차)(tic-tac-toe브랜치에서 작업)
 - state 끌어올리기 - 개요
