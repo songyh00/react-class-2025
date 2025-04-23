@@ -10,7 +10,7 @@
 - 과거 이동을 위한 map() 사용
     - history.map()으로 각 게임 상태를 버튼으로 렌더링.
     - 각 버튼은 jumpTo(move)를 호출함.
-```sh
+```js
 const moves = history.map((squares, move) => {
   const description = move ? `Go to move #${move}` : "Go to game start";
   return (
@@ -28,7 +28,7 @@ const moves = history.map((squares, move) => {
 - jumpTo 함수로 상태 이동
     - 클릭한 move를 기준으로 현재 상태 업데이트.
     - 짝수는 X 차례, 홀수는 O 차례로 처리.
-```sh
+```js
 const [currentMove, setCurrentMove] = useState(0);
 
 function jumpTo(nextMove) {
@@ -39,7 +39,7 @@ function jumpTo(nextMove) {
 
 - 랜더링 기준 변경
     - 항상 마지막 상태가 아닌, 선택한 시점의 보드를 렌더링하도록 수정.
-```sh
+```js
 const currentSquares = history[currentMove];
 ```
 
@@ -51,7 +51,7 @@ const currentSquares = history[currentMove];
 
 - 인덱스 기반으로 handleClick 함수 재정의
     - handleClick(index)로 index를 인자로 받아서하면 클릭된 Square의 index에 따라 값이 업데이트됨.
-```sh
+```js
 const nextSquares = squares.slice();
 nextSquares[i] = "X";
 setSquares(nextSquares);
@@ -59,13 +59,13 @@ setSquares(nextSquares);
 
 - 콜백 함수 전달 방식의 실수
     - onSquareClick={handleClick(i)}를 하면 함수가 즉시 실행되어 오류 발생하므로 화살표 함수를 사용해 함수 자체를 넘겨야 함.
-```sh
+```js
 onSquareClick={() => handleClick(i)}
 ```
 
 - 불변성의 중요성
     - xIsNext라는 state를 추가해서 다음에 누가 둘 차례인지 추적
-```sh
+```js
 const [xIsNext, setXIsNext] = useState(true);
 ...
 nextSquares[i] = xIsNext ? "X" : "O";
@@ -75,14 +75,14 @@ setXIsNext(!xIsNext);
 - 승자 판단하기
     - 클릭 시 calculateWinner(squares)를 실행해서 누군가 승리했는지 확인
     - 이미 값이 있거나, 승자가 있는 경우 클릭 이벤트는 무시
-```sh
+```js
 if (squares[i] || calculateWinner(squares)) return;
 ```
 
 - 승자 판단 후 상태 메시지 출력
     - calculateWinner(squares)를 호출해서 승자가 있는지 확인
     - 있으면 status = "Winner: X" 또는 "Winner: O", 없으면 status = "Next player: X" 또는 "Next player: O"
-```sh
+```js
 const winner = calculateWinner(squares);
 let status;
 if (winner) {
@@ -94,7 +94,7 @@ if (winner) {
 
 - 히스토리 배열로 이전 상태 저장
     - squares 배열을 직접 수정하지 않고, 매 클릭마다 slice()로 복사해서 저장 후 모아서 history 배열에 저장
-```sh
+```js
 const history = [
   [null, null, ..., null],   // 첫 턴
   ["X", null, ..., null],    // 두 번째 턴
@@ -108,7 +108,7 @@ const history = [
 
 - 컴포넌트 구조 변화
     - Game이 최상위 컴포넌트가 되고 App.js나 index.js에서 Board 대신 Game을 렌더링
-```sh
+```js
 export default function Game() {
   return (
     <div className="game">
@@ -211,7 +211,7 @@ export default function Game() {
 
     각 항목에는 고유한 key 속성 필요.
 
-    예제: ShoppingList 컴포넌트를 만들어 출력 확인.
+    예제: jsoppingList 컴포넌트를 만들어 출력 확인.
 
 ### 3월20일(3주차)
 - React란?
@@ -241,8 +241,16 @@ export default function Game() {
 
 ---
 
-## 🎨 React 수업 프로젝트 - React App
+## 📘 React 실습 프로젝트 정리
 
-이 프로젝트는 **React 수업**에서 활용하기 위한 실습 프로젝트입니다.  
-React의 기본 개념을 익히고, 컴포넌트 기반 UI 개발을 연습하는 데 목적이 있습니다. 🚀
+이 저장소는 2024년 React 수업에서 진행한 실습 내용을 정리한 자료입니다.
 
+---
+
+## 📘 Git Bash 명령어
+```js
+cd ~/Desktop
+npx create-react-app 프로젝트이름
+cd 프로젝트이름
+npm start
+```
