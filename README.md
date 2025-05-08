@@ -4,7 +4,46 @@
 
 ## 📘 React 수업 내용
 
-### 4월 23일 (중간고사)
+### 5월 08일 (10주차)(react-filterable-table브랜치에서 작업)
+- JSON API 예시
+```js
+[
+  { "category": "Fruits", "price": "$1", "stocked": true, "name": "Apple" },
+  { "category": "Fruits", "price": "$1", "stocked": true, "name": "Dragonfruit" },
+  { "category": "Fruits", "price": "$2", "stocked": false, "name": "Passionfruit" },
+  { "category": "Vegetables", "price": "$2", "stocked": true, "name": "Spinach" },
+  { "category": "Vegetables", "price": "$4", "stocked": false, "name": "Pumpkin" },
+  { "category": "Vegetables", "price": "$1", "stocked": true, "name": "Peas" }
+]
+```
+
+- UI를 컴포넌트 계층으로 쪼개기
+    - FilterableProductTable – 전체를 포함하는 상위 컴포넌트
+    - SearchBar – 검색어, 체크박스를 입력받음
+    - ProductTable – 제품 리스트 출력
+    - ProductCategoryRow – 카테고리별 헤더
+    - ProductRow – 개별 제품 행
+
+- 정적인 컴포넌트 구현
+    - props를 통해 상위 컴포넌트에서 하위 컴포넌트로 데이터 전달
+    - JSX만 사용한 렌더링
+    - 아직 state는 사용하지 않음
+    - 상위 트리부터 단방향 데이터 흐름 유지
+
+- 최소한의 state로 동적 UI 구현
+  - 어플리케이션에서 사용하는 데이터
+    - 제품의 원본 목록
+    - 사용자의 검색어
+    - 체크박스 선택 여부
+    - 필터링된 제품 목록
+  
+  - 아래 조건 중 하나라도 참이면 state 아님
+    - 시간이 지나도 변하지 않는다
+    - props로 전달된다
+    - 계산 가능하다
+    - 남은 값이 state
+
+### 4월 24일 (8주차)(중간고사)
 
 ### 4월 18일 (9주차 보강)(tic-tac-toe브랜치에서 작업)
 - 과거 이동을 위한 map() 사용
