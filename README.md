@@ -4,6 +4,46 @@
 
 ## 📘 React 수업 내용
 
+### 5월 15일 (11주차)(react-filterable-table브랜치에서 작업)
+- UI를 컴포넌트 계층으로 쪼개기
+    - 컴포넌트 구성 (기능별로 분리)
+        - FilterableProductTable: 전체 UI를 감싸는 상위 컴포넌트
+        - SearchBar: 검색창 + 체크박스를 포함, 사용자 입력을 받음
+        - ProductTable: 필터링된 상품 리스트 표시
+        - ProductCategoryRow: 카테고리 제목 (예: Fruits, Vegetables)
+        - ProductRow: 각 상품 항목 (예: Apple, Dragonfruit 등)
+
+- 최소한의 데이터만으로 UI 상태 표현하기
+    - State 최소화 원칙
+        - UI가 기억해야 할 최소한의 상태만 state로 관리
+        - 계산 가능한 값은 state가 아닌 일반 변수로 처리
+
+    - 데이터 예시
+        - 제품 원본 목록 → ❌ props로 전달되므로 state 아님
+        - 사용자 검색어 → ✅ 직접 입력되며 다른 값으로 계산 불가 → state
+        - 체크박스 값 → ✅ 직접 조작되며 계산 불가 → state
+        - 필터링된 제품 목록 → ❌ 검색어/체크박스 기반으로 계산 가능 → state 아님
+    
+결론: 검색어와 체크박스 값만 state로 관리!
+
+- State가 어디에 있어야 할 지 정하기
+    - State 위치 선정 절차
+        - 해당 state를 사용하는 모든 컴포넌트를 찾는다
+        - 그 중 가장 가까운 공통 부모 컴포넌트를 찾는다
+        - 해당 부모에 state를 배치한다
+    
+    - 실제 구현 예시
+        - FilterableProductTable에서 2개의 state 선언
+            ```sh
+            const [filterText, setFilterText] = useState('');
+            const [inStockOnly, setInStockOnly] = useState(false);
+            ```
+        - 그리고 이 값을 props로 SearchBar, ProductTable에 전달
+    
+    - 주의사항
+        - SearchBar에서 input과 checkbox의 value를 props로 받고 변경은 onChange로 전달해야 한다.
+        - 단순히 value만 주고 onChange가 없으면 read-only warning 발생함
+
 ### 5월 08일 (10주차)(react-filterable-table브랜치에서 작업)
 - JSON API 예시
 ```js
