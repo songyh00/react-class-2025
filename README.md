@@ -8,7 +8,7 @@
 - 기존 프로젝트에 React 추가하기
     - 기존 HTML 프로젝트에 React를 특정 위치에 컴포넌트로 추가하는 방법을 학습.
     - 기존 HTML 콘텐츠는 유지한 채, ReactDOM.createRoot()를 통해 <div id="app"> 같은 특정 엘리먼트에 React 컴포넌트를 렌더링.
-    - <script> 안에 직접 root.render(<h1>Hello, world</h1>)처럼 코드를 작성.
+    - <script> 안에 직접 코드를 작성.
     - 더 복잡한 경우에는 createRoot 공식 문서를 참조하도록 안내.
       
 - React 도입의 점진적 전략
