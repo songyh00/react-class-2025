@@ -4,6 +4,41 @@
 
 ## 📘 React 수업 내용
 
+### 6월 5일 (14주차)
+- 기존 프로젝트에 React 추가하기
+    - 기존 HTML 프로젝트에 React를 특정 위치에 컴포넌트로 추가하는 방법을 학습.
+    - 기존 HTML 콘텐츠는 유지한 채, ReactDOM.createRoot()를 통해 <div id="app"> 같은 특정 엘리먼트에 React 컴포넌트를 렌더링.
+    - <script> 안에 직접 root.render(<h1>Hello, world</h1>)처럼 코드를 작성.
+    - 더 복잡한 경우에는 createRoot 공식 문서를 참조하도록 안내.
+      
+- React 도입의 점진적 전략
+    - React는 처음엔 버튼 같은 작은 컴포넌트부터 시작해서 점점 범위를 넓혀 전체를 React로 마이그레이션할 수 있음.
+    - HTML 요소에 id를 부여하고, 그 위치에 React 컴포넌트를 연결하는 방식으로 통합 가능.
+    - <nav id="navigation">처럼 특정 영역만 React로 대체 가능.
+    
+- 프로젝트에 React 설치 (Installation)
+    - 새로운 React 프로젝트 시작, 기존 프로젝트에 추가, 에디터 설정, 개발자 도구 설치 등 도입 방법 전반을 설명.
+    
+- 에디터 설정하기
+    - 코드 가독성과 생산성을 높이기 위해 코드 에디터(VS Code 등) 사용을 권장.
+    - 자동 코드 포매팅, 버그 탐색 편의 등을 설명.
+    - 어떤 에디터를 쓰는지, 자동 포맷 설정법 등이 포함됨.
+    
+- React + TypeScript 사용 예시
+    - .tsx 확장자 파일 생성, 기본 컴포넌트 작성 예시 제공.
+    - MyApp.tsx 파일 내에서 MyButton 컴포넌트를 만들어 prop (title: string) 전달.
+    - JS 파일에서 .tsx 컴포넌트를 불러와 <MyApp />처럼 사용.
+  
+- TypeScript에서 Props 타입 지정
+    - type, interface를 사용해 props의 타입을 지정해야 함.
+    - Object Types와 Union Types를 이용해 props 타입을 세분화할 수 있음.
+    - 고급 사용법은 Creating Types from Types 문서를 참조하도록 안내.
+
+- MyApp vs MyApp2 비교
+    - MyApp2는 props에 disabled: boolean을 추가로 받는 구조.
+    - interface를 사용해 MyButtonProps를 정의하고, 컴포넌트에 타입 적용.
+    - 더 정교한 타입 지정과 props 제어 방식 예시 제시.
+ 
 ### 5월 29일 (13주차)
 - 중간고사 코드 리뷰
 
